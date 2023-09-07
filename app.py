@@ -22,9 +22,11 @@ def fetch_spacex_launches():
         return []
     
 def categorize_launches(launches):
+
     successful = list(filter(lambda x: x["success"] and not x["upcoming"], launches)) # filter will take all of the launches, look at the anonymous lambda function, and if function returns true it will take that data and add it into the filtered list. x represents the current iteration launch, and ["upcoming"] sees if that launch object has an "upcoming" key, if it does the expression will return true
     failed = list(filter(lambda x: not x["success"] and not x["upcoming"], launches))
     upcoming = list(filter(lambda x: x["upcoming"], launches))
+
 
     return {
         "successful": successful,
